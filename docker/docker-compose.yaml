@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes: 
+      - /Users/ehsanfazeli/websites/html/drawer:/var/www/html/drawer
+    networks:
+      - drawer
+    ports:
+      - 82:80
+
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - 6379:6379
+    networks:
+      - drawer
+
+networks:
+  drawer:
+    driver: 'bridge'
